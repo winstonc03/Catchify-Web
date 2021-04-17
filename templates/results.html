@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block body %}
+<div id = "resultsContainer">
+
+<img id = "trackImage" src={{image}} alt=image>
+<br>
+
+<a href="{{link}}" TARGET="_blank" id = "trackLink">{{name}}</a>
+<h2>{{artist}}</h2>
+
+<audio controls preload="none">
+    <source src="{{preview}}" type="audio/mpeg">
+</audio>
+    
+<p>(Please note that some songs don't have a preview available)</p> 
+<h2>{{index}} of {{length}}</h2>
+
+<form action="{{ url_for('results') }}" method="post">
+    <input type="submit" value="{{varNext}}" name="nextButton" class="next">
+    <input type="hidden" value="{{index}}" name="index">
+    <input type="hidden" value="{{option}}" name="option">
+    <input type="hidden" value="{{song_list}}" name="song_list">
+    <input type="hidden" value="False" name="isOption">
+</form>
+</div>
+
+
+</div>
+{% endblock %}

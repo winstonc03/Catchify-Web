@@ -1,0 +1,107 @@
+#main-header{
+    text-align:center;
+    background-color:#ffffff;
+    color:black;
+}
+   
+.title{
+    float: left;
+    margin-left: 30px;
+    padding: 20px;
+    color: black;
+    font-weight: bold;                
+}
+
+.logo{
+    width: 5%;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.homeLogo{
+    width: 40%;
+}
+
+nav{
+    float: right;
+}
+
+nav ul{
+    margin:0px;
+    padding: 0px;
+    list-style:none;
+}
+
+nav li{
+    display: inline-block;
+    margin-left:50px;
+    padding-top: 35px;
+    padding-right: 50px;
+    position: relative;
+}
+
+nav a{
+    color: #444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav a:hover{
+    color: black;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    width:0%;
+    height: 5px;
+    background-color: #92D5E6;
+    top:0;
+    position : absolute;
+
+    transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before{
+    width:100%  ;
+}
+
+header{
+    background-color: #ffffff;
+}
+
+header::after{
+    content:'';
+    display:table;
+    clear: both;
+}
+
+@media only screen and (max-device-width: 1366px) {
+
+    .logo{
+        width: 10%;
+        margin-top: 5px;
+        padding: 10px;
+    }
+
+    nav{
+        margin-right: 5px;
+    }
+
+    .homeLogo{
+      width: 50%;
+    }
+
+    nav a{
+        font-size: 0.75rem;
+    }
+
+    nav li{
+        padding-top: 10%;
+        padding-bottom: 2%;
+        padding-right: 5px;
+        position: relative;
+    }
+}

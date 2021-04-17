@@ -1,0 +1,106 @@
+{% extends 'base.html'%}
+
+{% block body %}
+<div id="intro">
+    <h2>Featured Playlists</h2>
+    <p>Created by users.</p>
+</div>
+
+<!-- I downloaded the pics, but you can still use external url -->
+<div id = "playlist_container">
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/4sIHlxb5A4oEUSJWVKAhy2?si=-y1dR4SURwuOaG3J6Pi6eQ" target="blank"><img id = "playlist_image" src="/static/images/cover1.jpg" alt=image class="hvr-grow"></a>
+        <h4>blessed</h4>
+        <p class="playlist_caption">Winston Chieng</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/7zcBoTNedlcs6gnG8vIp50?si=TEwHf8lDQGqS5IeFEcvWdQ" target="blank"><img id = "playlist_image" src="/static/images/cover2.jpg" alt=image class="hvr-grow"></a>
+        <h4>K-RnB</h4>
+        <p class="playlist_caption">Edison Hsu</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/5loOBCLUVryXKUJGcRajIx?si=1107f6c6543d4897" target="blank"><img id = "playlist_image" src="/static/images/cover3.jpg" alt=image class="hvr-grow"> </a>
+        <h4>Summertime</h4>
+        <p class="playlist_caption">Kevin Lin</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/3919wuUOYrjlMqc6A4kWfP?si=b78045db571d4af9" target="blank"><img id = "playlist_image" src="/static/images/cover4.jpg" alt=image class="hvr-grow"></a>
+        <h4>kpop</h4>
+        <p class="playlist_caption">Sophia Yang</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/6Fun1A85YKLhJn5VFZXinW?si=775a20e6d7434506" target="blank"><img id = "playlist_image" src="/static/images/cover5.jpg" alt=image class="hvr-grow"></a>
+        <h4>Staple Gun</h4>
+        <p class="playlist_caption">Django Mavis</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/25nybbU2H5kyIFumDR7Mpa?si=ca5c6d99e50b43a0" target="blank"><img id = "playlist_image" src="/static/images/cover6.jpg" alt=image class="hvr-grow"></a>
+        <h4>Pink Sand</h4>
+        <p class="playlist_caption">David Kou</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/4yfd6wMVG8guC3hGDU4voN?si=92304c7bb20a45ff" target="blank"><img id = "playlist_image" src="/static/images/cover7.jpg" alt=image class="hvr-grow"></a>
+        <h4>HoMEWOrK</h4>
+        <p class="playlist_caption">Ian Wong</p>
+    </div>
+    <div class="pbox">
+        <a href="https://open.spotify.com/playlist/09l51K6fpy1loJlp8QJ68Q?si=8f0e8ac16c23487f" target="blank"><img id = "playlist_image" src="/static/images/cover8.jpg" alt=image class="hvr-grow"></a>
+        <h4>throwback</h4>
+        <p class="playlist_caption">Wesley Lau</p>
+    </div>
+    
+</div>
+<div id="intro">
+    <h2>For You</h2>
+    <p>Artists we think you might like</p>
+</div>
+<div id = "artist_container">
+    <div class="abox">
+        <a href="{{artist1_link}}" target="blank"><img id = "artist_img" src="{{artist1_img}}" alt=image class="hvr-grow"></a>
+        <h3>{{artist1_name}}</h3>
+    </div>
+    <div class="abox">
+        <a href="{{artist2_link}}" target="blank"><img id = "artist_img" src="{{artist2_img}}" alt=image class="hvr-grow"></a>
+        <h3>{{artist2_name}}</h3>
+    </div>
+    <div class="abox">
+        <a href="{{artist3_link}}" target="blank"><img id = "artist_img" src="{{artist3_img}}" alt=image class="hvr-grow"></a>
+        <h3>{{artist3_name}}</h3>
+    </div>
+    <div class="abox">
+        <a href="{{artist4_link}}" target="blank"><img id = "artist_img" src="{{artist4_img}}" alt=image class="hvr-grow"></a>
+        <h3>{{artist4_name}}</h3>
+    </div>
+    <div class="abox">
+        <a href="{{artist5_link}}" target="blank"><img id = "artist_img" src="{{artist5_img}}" alt=image class="hvr-grow"></a>
+        <h3>{{artist5_name}}</h3>
+    </div>
+</div>
+
+<div id="intro">
+    <h2>Completely Random Song Generator</h2>
+    <p>If you just want to be surprised.</p>
+</div>
+<div id ="playlist_container">
+    <form action="{{ url_for('more') }}" method="post">
+        <div class="gbox">
+            <input type="submit" value="" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://media1.giphy.com/media/xUOxfjsW9fWPqEWouI/giphy.gif?cid=ecf05e47svwjxfsuwxsz3477guixrp2poh4gwdpeek18votr&rid=giphy.gif');">
+            <h2>Random!</h2>
+        </div>
+        <input type="hidden" value="True" name="isRandom">
+    </form>
+</div>
+
+<div id="intro">
+    <h2>Feedback</h2>
+    <p>Let us know how the recommendations were :)</p>
+</div>
+<div id ="artist_container">
+    <div class = "gbox">
+       <a href = "https://docs.google.com/forms/d/e/1FAIpQLSc7w0xiKhSA88gj_xZQtnrNMlN5LbjwlLnH1x_cmbon1mnVUA/viewform?usp=sf_link" target = "blank"><img id ="ty_gif" src="https://media3.giphy.com/media/3oEdva9BUHPIs2SkGk/giphy.gif"></a>
+        <h2>(Click the pickle for the form)</h2> 
+    </div>
+    
+</div>
+
+{% endblock %}

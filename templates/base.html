@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nav.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalizer.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito Sans" />
+    <script src="https://use.fontawesome.com/87cbbe42a8.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{{url_for('index')}}"><img src="/static/images/logo.png" alt=logo class="logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="https://www.paypal.com/paypalme/winstoncg" target="_blank">Donate</a></li>
+                    <li><a href="{{url_for('more')}}">More</a></li>
+                </ul>
+            </nav>
+          </div>
+    </header>
+    {% block body %}{% endblock %}
+    <footer>
+        <div class = "footer-content">
+            <h3>Catchify</h3>
+            <p>A Website created using Spotify API to recommend users music based on their listening history.</p>
+            <ul class = "socials">
+                <li><a href ="https://www.facebook.com/winston.chieng.9" target="_blank"><i class = "fa fa-facebook"></i></a></li>
+                <li><a href ="https://open.spotify.com/user/mrblock12?si=ea42ec7391e44ecc" target="_blank"><i class = "fa fa-spotify"></i></a></li>
+                <li><a href ="https://github.com/winstonc03" target="_blank"><i class = "fa fa-github"></i></a></li>
+                <li><a href ="https://www.paypal.com/paypalme/winstoncg" target="_blank"><i class = "fa fa-paypal"></i></a></li>
+                <li><a href ="https://www.instagram.com/winston.cg/?hl=en" target="_blank"><i class = "fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy;2021 Catchify</p>
+            <p>Developed by <span>Winston Chieng</span> Logo created by <span>Edison Hsu</span></p>
+            <a href="https://accounts.spotify.com/en/logout" id="logOut">Log out</a>
+        </div>
+    </footer>
+</body>
+</html>

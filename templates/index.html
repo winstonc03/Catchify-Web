@@ -1,0 +1,111 @@
+{% extends 'base.html'%}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<script>
+    function loading(){
+        document.getElementById("home").style.display = "none"
+        document.getElementById("intro").style.display = "none"
+        document.getElementById("home_image").style.display = "none"
+        document.getElementById("load").style.display = "block"
+        scroll(0,0)
+    }
+</script>
+<div id="load" style="display: none;" class ="load">
+    <img src="https://i.pinimg.com/originals/72/9b/17/729b174fb8d50fce2c76e2dcc4aa14e4.gif" alt="loading..." id = "loadImg">
+    <h3>Cooking up your Recommendations...</h3>
+</div>
+<div id="home_image">
+    <img src="/static/images/logo.png" alt="logo" class="homeLogo">
+    <h1 style="color: #08415C;">Catchify</h1>
+    <p>Discover New Music.</p>
+</div> 
+
+<div id="intro">
+    <h1>Algorithm</h1>
+    <p>Tell us what's important to you in a song and we'll give you some recommendations based off your listening history.</p>
+</div>
+<div id= "home">
+    <form action="{{ url_for('results') }}" method="post" onsubmit="loading()">
+    <div id="button_container"> 
+        <div class="gbox">
+            <input type="submit" value="Danceability" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://media3.giphy.com/media/46fSE32PJncBh2V7sG/source.gif');">
+        </div>
+        <div class="gbox">
+            <input type="submit" value="Energy" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://media0.giphy.com/media/26ufoAcj4cdJoeKzu/giphy.gif?cid=ecf05e479codp57a90zcqpy2rz9eki94n0pntq6widpi2rmm&rid=giphy.gif');">
+        </div>
+        <div class="gbox">
+            <input type="submit" value="Mood" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://media0.giphy.com/media/MRXdvH6gdFPAx22RAv/giphy.gif?cid=ecf05e47thsphh24hm70txvyn6u6lawf7iv17vd1afigojfj&rid=giphy.gif');">
+        </div>
+        <div class="gbox">
+            <input type="submit" value="Tempo" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://media4.giphy.com/media/MeCVsh3ntES5YKuQ8J/giphy.gif');">
+        </div>
+        <div class="gbox">
+            <input type="submit" value="Don't Care" name="optionButton"class= "home_buttons hvr-bounce-in"style = "background-image: url('https://data.whicdn.com/images/272875934/original.gif');">
+        </div>
+        <input type="hidden" value="True" name="isOption">
+    </div>
+</form>
+    <div id="intro">
+        <h1>Genres</h1>
+        <p>Choose a Genre and we'll recommend some songs for you.</p>
+    </div>
+    <div>
+        <form action="{{ url_for('genres') }}" method="post">
+            <div id="button_container">
+                <div class="gbox">
+                    <input type="submit" value="Rap" name="genreButton"class= "genre_buttons hvr-float" style = "background-image: url('https://s.abcnews.com/images/US/pop-smoke-gty-ps-120219_hpMain_1x1_608.jpg');">
+                    <h4>Rap</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Pop" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://images.8tracks.com/cover/i/002/647/080/IMG_2914-7418.jpg?rect=4,0,632,632&q=98&fm=jpg&fit=max');">
+                    <h4>Pop</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Lo-Fi" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://i.pinimg.com/474x/5b/19/04/5b1904f8438a5406ee420a92f01c9f0f.jpg');">
+                    <h4>Lo-Fi</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Dubstep" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://images.8tracks.com/cover/i/008/787/812/tumblr_n9eai6Sy401qccidno1_500-9476.jpg?rect=0,83,500,500&q=98&fm=jpg&fit=max');">
+                    <h4>Dubstep</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="K-Pop" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0d/%E2%80%98LG_Q7_BTS_%EC%97%90%EB%94%94%EC%85%98%E2%80%99_%EC%98%88%EC%95%BD_%ED%8C%90%EB%A7%A4_%EC%8B%9C%EC%9E%91_%2842773472410%29_%28cropped%29.jpg');">
+                    <h4>K-Pop</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Classical" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg');">
+                    <h4>Classical</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="R&B" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://thefader-res.cloudinary.com/private_images/w_1440,c_limit,f_auto,q_auto:best/GettyImages-516744398_bcfvmk/house-of-balloons-rountable-the-weeknd.jpg');">
+                    <h4>R&B</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Kids" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2018%2F12%2Fbackpack-kid-sues-epic-games-fortnite-001.jpg?q=75&w=800&cbr=1&fit=max');">
+                    <h4>Kids</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Chill" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://i.ytimg.com/vi/9r8VtP5kdoo/maxresdefault.jpg');">
+                    <h4>Chill</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Blues" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://pbs.twimg.com/media/DbxJUP-UQAAj5ac.jpg');">
+                    <h4>Blues</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Jazz" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://i.pinimg.com/originals/82/85/51/8285516580cd7e0b3a1488fb25d2a116.png');">
+                    <h4>Jazz</h4>
+                </div>
+                <div class="gbox">
+                    <input type="submit" value="Rock-n-Roll" name="genreButton"class= "genre_buttons hvr-float"style = "background-image: url('https://i.pinimg.com/originals/3d/05/86/3d05864d92566ac9be27b0bcb78cf323.jpg');">
+                    <h4>Rock-n-Roll</h4>
+                </div>
+            </div>
+            <input type="hidden" value="True" name="isGenre">
+        </form>
+    </div>
+</div>
+{% endblock %}
