@@ -165,7 +165,7 @@ def results():
 
     sp = spotipy.Spotify(auth=session['toke'])
     top_tracks = sp.current_user_top_tracks(limit=total_tracks, offset=0, time_range='medium_term')
-    top_artists = sp.current_user_top_artists(limit= 5, offset= 0, time_range='medium_term')
+    top_artists = sp.current_user_top_artists(limit= 10, offset= 0, time_range='medium_term')
 
     score_total = 0
     i = 0
@@ -198,7 +198,7 @@ def results():
             while x < 5:
                 artist_id = top_artists['items'][x]['id']
                 related = sp.artist_related_artists(artist_id)
-                for j in range(3):
+                for j in range(10):
                     artist = related['artists'][j]
                     artist_add = [artist['id']]
                     
@@ -207,7 +207,9 @@ def results():
                 x += 1
                 
             artist_length = len(artist_list)
-            for s in range(artist_length):
+            
+            while len(song_list) < 10:
+                s = random.randrange(0, artist_length)
                 song = (artist_list[s])
                 songs = sp.artist_top_tracks(song)
                 # Prevent 5 songs from same artist
@@ -302,8 +304,8 @@ def genres():
                 seed = ["spotify:artist:7e1ICztHM2Sc4JNLxeMXYl", "spotify:artist:7cSbcJTJBBSXDjRNR2qD61", "spotify:artist:3ycxRkcZ67ALN3GQJ57Vig", "spotify:artist:2FwDTncULUnmANIh7qKa5z"]
             if (request.form.get("genreButton")) == "Blues":
                 seed = ["spotify:artist:7EynH3keqfKUmauyaeZoxv", "spotify:artist:5xLSa7l4IV1gsQfhAMvl0U", "spotify:artist:5v8WPpMk60cqZbuZLdXjKY", "spotify:artist:48nwxUvPJZkm8uPa7xMzmj"]
-            if (request.form.get("genreButton")) == "Jazz":
-                seed = ["spotify:artist:0fTHKjepK5HWOrb2rkS5Em", "spotify:artist:4DuZTASH5eSyd0K73W6fuZ", "spotify:artist:2EsmKkHsXK0WMNGOtIhbxr", "spotify:artist:04gDigrS5kc9YWfZHwBETP"]
+            if (request.form.get("genreButton")) == "Chinese":
+                seed = ["https://open.spotify.com/artist/2elBjNSdBE2Y3f0j1mjrql?si=XzfpbRgJQcCYMJa4ucjPgQ", "https://open.spotify.com/artist/5fEQLwq1BWWQNR8GzhOIvi?si=Zjx0ZrAhR0WcnfaEZ7UqSw", "https://open.spotify.com/artist/2aFNEQB9JnQ171stH9Ljh5?si=z2PI9hwiRECaMmzW9354Rw", "https://open.spotify.com/artist/5PNcqs6EtD6gSXgUiiJIUU?si=qlgc9LxvSKSh-xLOh8F08A"]
             if (request.form.get("genreButton")) == "Rock-n-Roll":
                 seed = ["spotify:artist:711MCceyCBcFnzjGY4Q7Un","spotify:artist:3qm84nBOXUEQ2vnTfUTTFC","spotify:artist:4opTS86dN9uO313J9CE8xg","spotify:artist:1dfeR4HaWDbWqFHLkxsg1d"]
             
